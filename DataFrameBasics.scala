@@ -2,7 +2,7 @@ import org.apache.spark.sql.SparkSession
 
 val spark = SparkSession.builder().getOrCreate()
 
-val df = spark.read.option("header","true").option("inferSchema", "true").csv("../../SparkDataFrames/CitiGroup2006_2008")
+val df = spark.read.option("header","true").option("inferSchema", "true").csv("Data/CitiGroup2006_2008")
 
 println("")
 println("Printing DataFrame")
