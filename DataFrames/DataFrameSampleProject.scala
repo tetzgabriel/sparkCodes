@@ -2,7 +2,7 @@ import org.apache.spark.sql.SparkSession
 import spark.implicits._
 
 val spark = SparkSession.builder().getOrCreate()
-val df = spark.read.option("header", "true").option("inferSchema", "true").csv(("Data/Netflix_2011_2016.csv"))
+val df = spark.read.option("header", "true").option("inferSchema", "true").csv(("../Data/Netflix_2011_2016.csv"))
 
 println("")
 println("Printing columns names")
