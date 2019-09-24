@@ -39,3 +39,13 @@ val assembler = (new VectorAssembler().setInputCols(Array("Avg Area Income", "Av
                                       .setOutputCol("features"))
 val output = assembler.transform(df).select($"label",$"features")
 output.show()
+
+println("")
+println("Creating linear regression model")
+val lr = new LinearRegression()
+val lrModel = lr.fit(output)
+val trainingSummary = lrModel.summary
+
+println("")
+println("Printing residuals")
+trainingSummary.residuals.show()
