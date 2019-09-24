@@ -10,7 +10,7 @@ val spark = SparkSession.builder().getOrCreate()
 
 println("")
 println("Loading Data")
-val data = spark.read.option("header","true").option("inferSchema","true").format("csv").load("Data/Clean-USA-Housing.csv")
+val data = spark.read.option("header","true").option("inferSchema","true").format("csv").load("../Data/Clean-USA-Housing.csv")
 
 println("")
 println("Printing schema")
