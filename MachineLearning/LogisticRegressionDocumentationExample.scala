@@ -16,7 +16,7 @@ object LogisticRegressionWithElasticNetExample {
 
     // $example on$
     // Load training data
-    val training = spark.read.format("libsvm").load("sample_libsvm_data.txt")
+    val training = spark.read.format("libsvm").load("../Data/sample_libsvm_data.txt")
 
     val lr = new LogisticRegression()
       .setMaxIter(10)
