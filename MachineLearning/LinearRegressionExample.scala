@@ -2,26 +2,33 @@ import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.sql.SparkSession
 
 def main(): Unit = {
-  // Create Session App
+  println("")
+  println("Creating spark session")
   val spark = SparkSession.builder().appName("LinearRegressionExample").getOrCreate()
 
-  // May need to replace with full file path starting with file:///.
+  println("")
+  println("Creating path to archive")
   val path = "../Data/sample_linear_regression_data.txt"
 
-  // Training Data
+  println("")
+  println("Training data")
   val training = spark.read.format("libsvm").load(path)
   training.printSchema()
 
-  // Create new LinearRegression Object
+  println("")
+  println("Creating linear regression object")
   val lr = new LinearRegression().setMaxIter(100).setRegParam(0.3).setElasticNetParam(0.8)
 
-  // Fit the model
+  println("")
+  println("Fitting the model")
   val lrModel = lr.fit(training)
 
-  // Print the coefficients and intercept for linear regression
+  println("")
+  println("Printing coefficients and intercept")
   println(s"Coefficients: ${lrModel.coefficients} Intercept: ${lrModel.intercept}")
 
-  // Summarize the model over the training set and print out some metrics
+  println("")
+  println("Summarizing the model")
   val trainingSummary = lrModel.summary
   println(s"numIterations: ${trainingSummary.totalIterations}")
   println(s"objectiveHistory: ${trainingSummary.objectiveHistory.toList}")
@@ -29,7 +36,8 @@ def main(): Unit = {
   println(s"RMSE: ${trainingSummary.rootMeanSquaredError}")
   println(s"r2: ${trainingSummary.r2}")
 
-  // $example off$
+  println("")
+  println("Stoping spark")
   spark.stop()
 }
 main()
